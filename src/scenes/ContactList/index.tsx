@@ -12,6 +12,7 @@ const ContactList = ({ navigation, route }: NativeStackScreenProps<StackParams, 
     DeviceEventEmitter.addListener('goToDetails', (eventData) => {
         navigation.navigate('Details', { contact: eventData.contact })
     })
+
     return (
         <SafeAreaView style={styles.container}>
             <TouchableOpacity

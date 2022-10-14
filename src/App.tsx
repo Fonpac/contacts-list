@@ -15,33 +15,15 @@ export type StackParams = {
 const Stack = createNativeStackNavigator<StackParams>()
 
 const App = () => {
-    const [constactList, updateContactList] = useState<Contact[]>([
+    const constactList = [
         {
             id: 1,
             name: 'Bernardo',
             email: 'bernardo@mail.com',
-            birthDate: '22/01/1998'
+            birthDate: '22/01/1998',
+            phoneNumber: '51994307295'
         }
-    ])
-
-    const updateContact = (contact: Contact) => {
-        let index = constactList.findIndex((con) => con.id === contact.id)
-        let newArr = [...constactList]
-        newArr[index] = contact
-        updateContactList(newArr)
-    }
-
-    const createContact = (contact: Contact) => {
-        let newArr = [...constactList, contact]
-        updateContactList(newArr)
-    }
-
-    const deleteContact = (id: number) => {
-        let index = constactList.findIndex((con) => con.id == id)
-        let newArr = [...constactList]
-        newArr.splice(index, 1)
-        updateContactList(newArr)
-    }
+    ]
 
     return (
         <NavigationContainer>
@@ -53,11 +35,7 @@ const App = () => {
                         contacts: constactList
                     }}
                 />
-                <Stack.Screen
-                    name="Details"
-                    component={ContactDetails}
-                    initialParams={{ updateContact, createContact, deleteContact }}
-                />
+                <Stack.Screen name="Details" component={ContactDetails} initialParams={{ contacts: constactList }} />
             </Stack.Navigator>
         </NavigationContainer>
     )

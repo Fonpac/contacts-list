@@ -3,4 +3,5 @@ export default interface Contact {
     name: string
     email: string
     birthDate: string
+    phoneNumber: string
 }
